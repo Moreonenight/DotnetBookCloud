@@ -11,6 +11,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BookCloudATLLib;
+using Microsoft.Extensions.Configuration;
+using System.Threading;
 
 namespace DotnetBookCloud.Controllers
 {
@@ -21,12 +23,19 @@ namespace DotnetBookCloud.Controllers
         private readonly BookCloudDBContext _context;
         private readonly IDatabase _redis;
         private ATLTemp _aTLTemp;
+        private readonly string _smtpHost;
+        private readonly string _smtpUsername;
+        private readonly string _smtpPassword;
 
-        public OrderController(BookCloudDBContext context, RedisService client)
+        public OrderController(BookCloudDBContext context, RedisService client, IConfiguration configuration)
         {
             _context = context;
             _redis = client.GetDatabase();
             _aTLTemp = new();
+            var mailDefaultSection = configuration.GetSection("Mail:Default");
+            _smtpHost = mailDefaultSection.GetSection("Host").Value;
+            _smtpUsername = mailDefaultSection.GetSection("Username").Value;
+            _smtpPassword = mailDefaultSection.GetSection("Password").Value;
         }
 
         [HttpPost("AddOrder")]
@@ -62,6 +71,14 @@ namespace DotnetBookCloud.Controllers
             }
             _context.Orders.Update(order);
             _context.SaveChanges();
+            MailInfo mailInfo = new();
+            mailInfo.SmtpServer = _smtpHost;
+            mailInfo.MailFrom = _smtpUsername;
+            mailInfo.UserPassword = _smtpPassword;
+            mailInfo.MailTo = user.Email;
+            mailInfo.MailSubject = "【书云】您有一份新的订单";
+            mailInfo.MailContent = "尊敬的 " + user.Name + " 用户，您好。您在书云有一份新的订单。订单编号为 " + order.OrderId + "，请及时确认。";
+            ThreadPool.QueueUserWorkItem(MailHelper.Execute, mailInfo);
             return new RetMessage(200, "OK", null);
         }
 

@@ -218,6 +218,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ATLTemp.h" />
     <ClInclude Include="BookCloudATL_i.h" />
     <ClInclude Include="dllmain.h" />
     <ClInclude Include="framework.h" />
@@ -226,6 +227,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ATLTemp.cpp" />
     <ClCompile Include="BookCloudATL.cpp" />
     <ClCompile Include="BookCloudATL_i.c">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
@@ -266,6 +268,7 @@
     <ResourceCompile Include="BookCloudATL.rc" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ATLTemp.rgs" />
     <None Include="BookCloudATL.def" />
     <None Include="BookCloudATL.rgs" />
   </ItemGroup>

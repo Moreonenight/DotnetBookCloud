@@ -8,11 +8,30 @@ import "oaidl.idl";
 import "ocidl.idl";
 
 [
+	object,
+	uuid(c8154e1a-bd4c-4e83-a026-3e7c3a9dc39e),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface IATLTemp : IDispatch
+{
+	[id(1)] HRESULT Multiplier([in] DOUBLE __num1, [in] DOUBLE __num2, [out, retval] DOUBLE* __result);
+};
+[
 	uuid(63adfab8-8333-4759-a418-ad0050729138),
 	version(1.0),
 ]
 library BookCloudATLLib
 {
 	importlib("stdole2.tlb");
+	[
+		uuid(138e8479-d981-4ac9-a7da-a07970a42ead)
+	]
+	coclass ATLTemp
+	{
+		[default] interface IATLTemp;
+	};
 };
 
+import "shobjidl.idl";

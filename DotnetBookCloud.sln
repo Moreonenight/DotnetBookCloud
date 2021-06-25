@@ -3,18 +3,61 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31410.357
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotnetBookCloud", "DotnetBookCloud\DotnetBookCloud.csproj", "{D166057B-1CD4-4A23-BD79-912D4C05A013}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotnetBookCloud", "DotnetBookCloud\DotnetBookCloud.csproj", "{D166057B-1CD4-4A23-BD79-912D4C05A013}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BookCloudATL", "BookCloudATL\BookCloudATL.vcxproj", "{257574A0-712D-49BE-B0AE-F99E50505FC7}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BookCloudATLPS", "BookCloudATLPS\BookCloudATLPS.vcxproj", "{3D418579-4CC5-4C67-9B74-17622A3270AE}"
+	ProjectSection(ProjectDependencies) = postProject
+		{257574A0-712D-49BE-B0AE-F99E50505FC7} = {257574A0-712D-49BE-B0AE-F99E50505FC7}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{47048FA3-0BDD-4EFC-A232-4F6ED61CF228}"
+	ProjectSection(SolutionItems) = preProject
+		lib\BookCloudATL\BookCloudATL.dll = lib\BookCloudATL\BookCloudATL.dll
+		lib\BookCloudATL\BookCloudATL.exp = lib\BookCloudATL\BookCloudATL.exp
+		lib\BookCloudATL\BookCloudATL.lib = lib\BookCloudATL\BookCloudATL.lib
+		lib\BookCloudATL\BookCloudATL.pdb = lib\BookCloudATL\BookCloudATL.pdb
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{D166057B-1CD4-4A23-BD79-912D4C05A013}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D166057B-1CD4-4A23-BD79-912D4C05A013}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D166057B-1CD4-4A23-BD79-912D4C05A013}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D166057B-1CD4-4A23-BD79-912D4C05A013}.Debug|x64.Build.0 = Debug|Any CPU
+		{D166057B-1CD4-4A23-BD79-912D4C05A013}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D166057B-1CD4-4A23-BD79-912D4C05A013}.Debug|x86.Build.0 = Debug|Any CPU
 		{D166057B-1CD4-4A23-BD79-912D4C05A013}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D166057B-1CD4-4A23-BD79-912D4C05A013}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D166057B-1CD4-4A23-BD79-912D4C05A013}.Release|x64.ActiveCfg = Release|Any CPU
+		{D166057B-1CD4-4A23-BD79-912D4C05A013}.Release|x64.Build.0 = Release|Any CPU
+		{D166057B-1CD4-4A23-BD79-912D4C05A013}.Release|x86.ActiveCfg = Release|Any CPU
+		{D166057B-1CD4-4A23-BD79-912D4C05A013}.Release|x86.Build.0 = Release|Any CPU
+		{257574A0-712D-49BE-B0AE-F99E50505FC7}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{257574A0-712D-49BE-B0AE-F99E50505FC7}.Debug|x64.ActiveCfg = Debug|x64
+		{257574A0-712D-49BE-B0AE-F99E50505FC7}.Debug|x64.Build.0 = Debug|x64
+		{257574A0-712D-49BE-B0AE-F99E50505FC7}.Debug|x86.ActiveCfg = Debug|Win32
+		{257574A0-712D-49BE-B0AE-F99E50505FC7}.Debug|x86.Build.0 = Debug|Win32
+		{257574A0-712D-49BE-B0AE-F99E50505FC7}.Release|Any CPU.ActiveCfg = Release|Win32
+		{257574A0-712D-49BE-B0AE-F99E50505FC7}.Release|x64.ActiveCfg = Release|x64
+		{257574A0-712D-49BE-B0AE-F99E50505FC7}.Release|x64.Build.0 = Release|x64
+		{257574A0-712D-49BE-B0AE-F99E50505FC7}.Release|x86.ActiveCfg = Release|Win32
+		{257574A0-712D-49BE-B0AE-F99E50505FC7}.Release|x86.Build.0 = Release|Win32
+		{3D418579-4CC5-4C67-9B74-17622A3270AE}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{3D418579-4CC5-4C67-9B74-17622A3270AE}.Debug|x64.ActiveCfg = Debug|x64
+		{3D418579-4CC5-4C67-9B74-17622A3270AE}.Debug|x86.ActiveCfg = Debug|Win32
+		{3D418579-4CC5-4C67-9B74-17622A3270AE}.Release|Any CPU.ActiveCfg = Release|Win32
+		{3D418579-4CC5-4C67-9B74-17622A3270AE}.Release|x64.ActiveCfg = Release|x64
+		{3D418579-4CC5-4C67-9B74-17622A3270AE}.Release|x86.ActiveCfg = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

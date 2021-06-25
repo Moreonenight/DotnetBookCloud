@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BookCloudATLLib;
 
 namespace DotnetBookCloud.Controllers
 {
@@ -19,11 +20,13 @@ namespace DotnetBookCloud.Controllers
     {
         private readonly BookCloudDBContext _context;
         private readonly IDatabase _redis;
+        private ATLTemp _aTLTemp;
 
         public OrderController(BookCloudDBContext context, RedisService client)
         {
             _context = context;
             _redis = client.GetDatabase();
+            _aTLTemp = new();
         }
 
         [HttpPost("AddOrder")]
@@ -53,7 +56,8 @@ namespace DotnetBookCloud.Controllers
                 var book = _context.Books.Find(orderItem.BookId);
                 new_orderItem.Price = book.Price;
                 new_orderItem.Discount = book.Discount;
-                order.TotalPrice += book.Price * book.Discount * orderItem.Quantity;
+                var discountedPrice = _aTLTemp.Multiplier(book.Price, book.Discount);
+                order.TotalPrice += discountedPrice * orderItem.Quantity;
                 _context.OrderItems.Add(new_orderItem);
             }
             _context.Orders.Update(order);

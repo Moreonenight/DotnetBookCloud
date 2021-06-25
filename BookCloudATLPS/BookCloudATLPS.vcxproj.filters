@@ -31,7 +31,7 @@
       <Filter>生成的文件</Filter>
     </ClCompile>
     <ClCompile Include="..\BookCloudATL\dlldata.c">
-      <Filter>生成的文件</Filter>
+      <Filter>头文件</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

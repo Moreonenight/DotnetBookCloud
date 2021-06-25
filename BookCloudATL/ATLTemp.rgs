@@ -1,0 +1,26 @@
+HKCR
+{
+	DotnetBookCloud.ATLTemp.1 = s 'ATLTemp class'
+	{
+		CLSID = s '{138e8479-d981-4ac9-a7da-a07970a42ead}'
+	}
+	DotnetBookCloud.ATLTemp = s 'ATLTemp class'
+	{		
+		CurVer = s 'DotnetBookCloud.ATLTemp.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {138e8479-d981-4ac9-a7da-a07970a42ead} = s 'ATLTemp class'
+		{
+			ProgID = s 'DotnetBookCloud.ATLTemp.1'
+			VersionIndependentProgID = s 'DotnetBookCloud.ATLTemp'
+			ForceRemove Programmable
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			TypeLib = s '{63adfab8-8333-4759-a418-ad0050729138}'
+			Version = s '1.0'
+		}
+	}
+}

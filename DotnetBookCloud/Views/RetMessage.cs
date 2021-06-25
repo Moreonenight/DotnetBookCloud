@@ -7,17 +7,27 @@ namespace DotnetBookCloud.Views
 {
     public class RetMessage
     {
-        public int status { get; set; }
+        public int Status { get; set; }
 
-        public string message { get; set; }
+        public string Message { get; set; }
 
-        public object data { get; set; }
+        public bool Success { get; set; }
+
+        public object Data { get; set; }
 
         public RetMessage(int status, string message, object data)
         {
-            this.status = status;
-            this.message = message;
-            this.data = data;
+            this.Status = status;
+            if(status == 200)
+            {
+                this.Success = true;
+            }
+            else
+            {
+                this.Success = false;
+            }
+            this.Message = message;
+            this.Data = data;
         }
     }
 }

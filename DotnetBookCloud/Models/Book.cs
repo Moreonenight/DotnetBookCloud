@@ -26,6 +26,8 @@ namespace DotnetBookCloud.Models
 
         public double Discount { get; set; }
 
+        public string Abstract { get; set; }
+
         public int Inventory { get; set; }
 
         public bool Secondhand { get; set; }

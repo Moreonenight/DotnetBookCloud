@@ -25,14 +25,14 @@ namespace DotnetBookCloud.Controllers
             _redis = client.GetDatabase();
         }
 
-        [HttpGet("SearchBook")]
+        [HttpPost("SearchBook")]
         public Object SearchBook([FromBody] BookNameDTO request)
         {
             var books = _context.Books.Where(b => b.Name.Contains(request.Name));
             return new RetMessage(200, "OK", books);
         }
 
-        [HttpGet("GetBookDetail")]
+        [HttpPost("GetBookDetail")]
         public Object GetBookDetail([FromBody] BookIdDTO request)
         {
             var book = _context.Books.Find(request.BookId);

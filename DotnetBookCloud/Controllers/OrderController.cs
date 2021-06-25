@@ -31,7 +31,7 @@ namespace DotnetBookCloud.Controllers
         {
             User user = RedisUtils.GetUser(Request, _context.Users, _redis);
             if (user == null) return new RetMessage(400, "Session已失效", null);
-            Models.Order order = new Models.Order();
+            Models.Order order = new();
             order.Address = request.Address;
             order.Telephone = request.Telephone;
             order.ReceiverName = request.ReceiverName;
@@ -44,10 +44,12 @@ namespace DotnetBookCloud.Controllers
             _context.SaveChanges();
             foreach (var orderItem in request.OrderItems)
             {
-                OrderItem new_orderItem = new OrderItem();
-                new_orderItem.OrderId = order.OrderId;
-                new_orderItem.BookId = orderItem.BookId;
-                new_orderItem.Quantity = orderItem.Quantity;
+                OrderItem new_orderItem = new()
+                {
+                    OrderId = order.OrderId,
+                    BookId = orderItem.BookId,
+                    Quantity = orderItem.Quantity
+                };
                 var book = _context.Books.Find(orderItem.BookId);
                 new_orderItem.Price = book.Price;
                 new_orderItem.Discount = book.Discount;
@@ -59,7 +61,7 @@ namespace DotnetBookCloud.Controllers
             return new RetMessage(200, "OK", null);
         }
 
-        [HttpGet("GetOrderDetail")]
+        [HttpPost("GetOrderDetail")]
         public Object GetOrderDetail([FromBody] OrderIdDTO request)
         {
             User user = RedisUtils.GetUser(Request, _context.Users, _redis);
@@ -70,7 +72,7 @@ namespace DotnetBookCloud.Controllers
                 return new RetMessage(400, "订单不存在", null);
             }
             var orderItems = _context.OrderItems.Where(o => o.OrderId == request.OrderId);
-            OrderView orderView = new OrderView(order, orderItems);
+            OrderView orderView = new(order, orderItems);
             return new RetMessage(200, "OK", orderView);
         }
 

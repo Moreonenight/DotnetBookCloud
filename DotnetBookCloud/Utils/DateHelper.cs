@@ -35,7 +35,9 @@ namespace DotnetBookCloud.Utils
             {
                 formattedTime += ":" + times[i];
             }
-            for (; i < 3; ++i)
+            Function func = new Function();
+            int upperLimit = func.FuncAdd(1, 2);
+            for (; i < upperLimit; ++i)
             {
                 formattedTime += ":00";
             }

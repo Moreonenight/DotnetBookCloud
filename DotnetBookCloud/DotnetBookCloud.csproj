@@ -39,6 +39,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BookCloudCLRLogger\BookCloudCLRLogger.vcxproj" />
+    <ProjectReference Include="..\BookCloudSharedAssembly\BookCloudSharedAssembly.csproj" />
     <ProjectReference Include="..\BookCloudWin32DLL\BookCloudWin32DLL.vcxproj" />
   </ItemGroup>
 

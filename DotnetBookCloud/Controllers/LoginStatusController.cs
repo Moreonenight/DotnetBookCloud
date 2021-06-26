@@ -2,7 +2,6 @@
 using DotnetBookCloud.DTO;
 using DotnetBookCloud.Models;
 using DotnetBookCloud.Services;
-using DotnetBookCloud.Utils;
 using DotnetBookCloud.Views;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -11,6 +10,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BookCloudSharedAssembly.Utils;
+using DotnetBookCloud.Utils;
 
 namespace DotnetBookCloud.Controllers
 {

@@ -33,4 +33,9 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BookCloudCLRLogger\BookCloudCLRLogger.vcxproj" />
+    <ProjectReference Include="..\BookCloudWin32DLL\BookCloudWin32DLL.vcxproj" />
+  </ItemGroup>
+
 </Project>

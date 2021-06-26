@@ -1,17 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 
 namespace DotnetBookCloud.Utils
 {
     public class DateHelper
     {
+        [DllImport(@"BookCloudWin32DLL.dll")]
+        private static extern bool DateLengthCheck(int length);
         public static String FormatTime(String time)
         {
             String[]
             times = time.Split(":");
-            if (times.Length == 0 || times.Length > 3)
+
+            if (!DateLengthCheck(time.Length))
             {
                 throw new Exception(time + ":Time length is wrong!");
             }

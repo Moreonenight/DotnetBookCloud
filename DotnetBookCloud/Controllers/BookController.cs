@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BookCloudCLRLogger;
 
 namespace DotnetBookCloud.Controllers
 {
@@ -18,6 +19,7 @@ namespace DotnetBookCloud.Controllers
     {
         private readonly BookCloudDBContext _context;
         private readonly IDatabase _redis;
+        static private BookCloudLogger logger = new BookCloudLogger();
 
         public BookController(BookCloudDBContext context, RedisService client)
         {
@@ -29,6 +31,8 @@ namespace DotnetBookCloud.Controllers
         public Object SearchBook([FromBody] BookNameDTO request)
         {
             var books = _context.Books.Where(b => b.Name.Contains(request.Name));
+            string s = "SearchBook::search " + request.Name + " success.";
+            logger.Logger(ref s);
             return new RetMessage(200, "OK", books);
         }
 

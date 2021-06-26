@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
+using BookCloudATLLib;
 
 namespace DotnetBookCloud.Utils
 {
@@ -10,6 +11,15 @@ namespace DotnetBookCloud.Utils
     {
         [DllImport(@"BookCloudWin32DLL.dll")]
         private static extern bool DateLengthCheck(int length);
+
+        private ATLTemp _aTLTemp;
+
+        public double CheckTime(double pendingCheck, double baseCheck)
+        {
+            _aTLTemp = new();
+            var retCode = _aTLTemp.Multiplier(pendingCheck, baseCheck);
+            return retCode;
+        }
         public static String FormatTime(String time)
         {
             String[]

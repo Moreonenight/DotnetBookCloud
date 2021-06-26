@@ -10,7 +10,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using BookCloudATLLib;
 using Microsoft.Extensions.Configuration;
 using System.Threading;
 
@@ -22,7 +21,6 @@ namespace DotnetBookCloud.Controllers
     {
         private readonly BookCloudDBContext _context;
         private readonly IDatabase _redis;
-        private ATLTemp _aTLTemp;
         private readonly string _smtpHost;
         private readonly string _smtpUsername;
         private readonly string _smtpPassword;
@@ -31,7 +29,6 @@ namespace DotnetBookCloud.Controllers
         {
             _context = context;
             _redis = client.GetDatabase();
-            _aTLTemp = new();
             var mailDefaultSection = configuration.GetSection("Mail:Default");
             _smtpHost = mailDefaultSection.GetSection("Host").Value;
             _smtpUsername = mailDefaultSection.GetSection("Username").Value;
@@ -65,8 +62,7 @@ namespace DotnetBookCloud.Controllers
                 var book = _context.Books.Find(orderItem.BookId);
                 new_orderItem.Price = book.Price;
                 new_orderItem.Discount = book.Discount;
-                var discountedPrice = _aTLTemp.Multiplier(book.Price, book.Discount);
-                order.TotalPrice += discountedPrice * orderItem.Quantity;
+                order.TotalPrice += book.Price * book.Discount * orderItem.Quantity;
                 _context.OrderItems.Add(new_orderItem);
             }
             _context.Orders.Update(order);
